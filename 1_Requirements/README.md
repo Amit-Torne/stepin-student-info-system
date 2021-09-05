@@ -15,10 +15,17 @@ WHO:  Administrators in Schools,Colleges,Tution Centres and Universities
 WHAT: To manage enormous amount of data, it becomes important to include a managing tool to your School,Colleges. A Student INFO System is solution to all the requirements a school work on. Various features like Searching a student by his name or roll no , delete the student record and update the record etc.It is mainly useful for educational establishments to manage student data which also facilitates all individual associated information for easier navigation on daily basis. 
 
 
-WhHEN:  The earliest management system for schools was developed in 1978 by Raymond Bily while he was a student at Asheville High School, in Asheville, NC. It was initially developed by Philip Neal, a teacher at Lea Manor High School, from # 1982 to 1983. Bedfordshire County Council (Lea Manor's local education authority) then further developed the product, which began being used by other schools in 1984.
+WHEN:  The earliest management system for schools was developed in 1978 by Raymond Bily while he was a student at Asheville High School, in Asheville, NC. It was initially developed by Philip Neal, a teacher at Lea Manor High School, from # 1982 to 1983. Bedfordshire County Council (Lea Manor's local education authority) then further developed the product, which began being used by other schools in 1984.
 
 
 WHERE:  The problem is faced everywhere in various school and colleges.
 
 
 HOW:  Schools,Colleges,Tution Centres and Universities in almost all technologically developing and developed nations.
+
+                                                              High Level Requirements:
+                                                              
+ 
+
+
+
