@@ -31,6 +31,8 @@ HOW:  Schools,Colleges,Tution Centres and Universities in almost all technologic
   
                                                               Low level Requirements:
                                                               
-                                                              
+ 
+![image](https://user-images.githubusercontent.com/81459871/132116992-3055b766-5350-49b5-a253-c7705966b58b.png)
+                                                             
 
 
