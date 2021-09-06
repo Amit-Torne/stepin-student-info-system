@@ -1,112 +1,191 @@
-#include <calculator_operations.h>
+/**
+ * @file main.c
+ * @author your name (you@domain.com)
+ * @brief 
+ * @version 0.1
+ * @date 2021-09-06
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 
-/* Status of the operation requested */
-#define VALID   (1)
-#define INVALID (0)
+#include "math.h"
+#include "stdio.h"
+#include "stdlib.h"
+#include "string.h"
+#include "add.c"
 
-/* Calculator operation requested by user*/
-unsigned int calculator_operation = 0;
-
-/* Operands on which calculation is performed */
-int calculator_operand1 = 0;
-int calculator_operand2 = 0;
-
-/* Valid operations */
-enum operations{ ADD=1, SUBTRACT, MULTIPLY, DIVIDE, EXIT };
-
-/* Display the menu of operations supported */
-void calculator_menu(void);
-/* Verifies the requested operations validity */
-int valid_operation(int operation);
-
-
-/* Start of the application */
-int main(int argc, char *argv[])
+void find_rl()
 {
-    printf("\n****Calculator****\n");
-    while(1)
-    {
-        calculator_menu();
+    int x;
+    printf("Enter the Roll Number of the student\n");
+    scanf("%d", &x);
+    for (int j = 1; j <= i; j++) {
+        if (x == st[i].roll) {
+            printf("The Students Details are\n");
+            printf("The First name is %s\n",st[i].fname);
+            printf("The Last name is %s\n",st[i].lname);
+            printf("The CGPA is %f\n",st[i].cgpa);
+            printf("Enter the course ID of each course\n");
+        }
+        for (int j = 0; j < 5; j++) {
+            printf("The course ID are %d\n",st[i].cid[j]);
+        }
+        break;
     }
 }
 
-void calculator_menu(void)
+// Function to find the student by the first name
+void find_fn()
 {
-    printf("\nAvailable Operations\n");
-    printf("\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\n5. Exit");
-    printf("\n\tEnter your choice\n");
-   
-     __fpurge(stdin);
-    scanf("%d", &calculator_operation);
-
-    if(EXIT == calculator_operation)
-    {
-        printf("\nThank you. Exiting the Application\n");
-        exit(0);
+    char a[50];
+    printf("Enter the First Name of the student\n");
+    scanf("%s", a);
+    int c = 0;
+    for (int j = 1; j <= i; j++) {
+        if (!strcmp(st[j].fname, a)) {
+  
+            printf("The Students Details are\n");
+            printf("The First name is %s\n",st[i].fname);
+            printf("The Last name is %s\n",st[i].lname);
+            printf("The Roll Number is %d\n ",st[i].roll);
+            printf("The CGPA is %f\n",st[i].cgpa);
+            printf("Enter the course ID of each course\n");
+            for (int j = 0; j < 5; j++) {
+                printf("The course ID are %d\n",st[i].cid[j]);
+            }
+            c = 1;
+        }
+        else
+            printf("The First Name not Found\n");
     }
-
-    if(INVALID != valid_operation(calculator_operation))
-    {
-        printf("\n\tEnter your Numbers with space between them\n");
-        __fpurge(stdin);
-        scanf("%d %d", &calculator_operand1, &calculator_operand2);
+}
+// Function to find the students enrolled in a particular course
+void find_c()
+{
+    int id;
+    printf("Enter the course ID \n");
+    scanf("%d", &id);
+    int c = 0;
+  
+    for (int j = 1; j <= i; j++) {
+        for (int d = 0; d < 5; d++) {
+            if (id == st[j].cid[d]) {
+  
+                printf("The Students Details are\n");
+                printf("The First name is %s\n",st[i].fname);
+                printf("The Last name is %s\n",st[i].lname);
+                printf("The Roll Number is %d\n ",st[i].roll);
+                printf("The CGPA is %f\n",st[i].cgpa);
+                c = 1;
+                break;
+            }
+            else
+                printf("The First Name not Found\n");
+        }
     }
-    else
-    {
-        printf("\n\t---Wrong choice---\nEnter to continue\n");
-        __fpurge(stdin);
-        getchar();
-        return;
-        
+}
+// Function to print the total number of students
+void tot_s()
+{
+    printf("The total number of Student is %d\n",i);
+    printf("\n you can have a max of 50 students\n");
+    printf("you can have %d more students\n",50 - i);
+} 
+// Function to delete a student by the roll number
+void del_s()
+{
+    int a;
+    printf("Enter the Roll Number which you want to delete\n");
+    scanf("%d", &a);
+    for (int j = 1; j <= i; j++) {
+        if (a == st[j].roll) {
+            for (int k = j; k < 49; k++)
+                st[k] = st[k + 1];
+            i--;
+        }
     }
-    switch(calculator_operation)
-    {
-        case ADD:
-            printf("\n\t%d + %d = %d\nEnter to continue", 
-            calculator_operand1, 
-            calculator_operand2,
-            add(calculator_operand1, calculator_operand2));
-            
-            __fpurge(stdin);
-            getchar();
+    printf("The Roll Number is removed Successfully\n");
+}
+// Function to update a students data
+void up_s()
+{
+    printf("Enter the roll number to update the entry : ");
+    long int x;
+    scanf("%ld", &x);
+    for (int j = 0; j < i; j++) {
+        if (st[j].roll == x) {
+            printf("1. first name\n2. last name\n3. roll no.\n4. CGPA\n5. courses\n");
+            int z;
+            scanf("%d", &z);
+            switch (z) {
+            case 1:
+                printf("Enter the new first name : \n");
+                scanf("%s", st[j].fname);
+                break;
+            case 2:
+                printf("Enter the new last name : \n");
+                scanf("%s", st[j].lname);
+                break;
+            case 3:
+                printf("Enter the new roll numnber : \n");
+                scanf("%d", &st[j].roll);
+                break;
+            case 4:
+                printf("Enter the new CGPA : \n");
+                scanf("%f", &st[j].cgpa);
+                break;
+            case 5:
+                printf("Enter the new courses \n");
+                scanf("%d%d%d%d%d", &st[j].cid[0],&st[j].cid[1], &st[j].cid[2],&st[j].cid[3], &st[j].cid[4]);
+                break;
+            }
+            printf("UPDATED SUCCESSFULLY.\n");
+        }
+    }
+}
+void main()
+{
+    int choice, count;
+    while (i = 1) {
+        printf("The Task that you want to perform\n");
+        printf("1. Add the Student Details\n");
+        printf("2. Find the Student Details by Roll Number\n");
+        printf("3. Find the Student Details by First Name\n");
+        printf("4. Find the Student Details by Course Id\n");
+        printf("5. Find the Total number of Students\n");
+        printf("6. Delete the Students Details by Roll Number\n");
+        printf("7. Update the Students Details by Roll Number\n");
+        printf("8. To Exit\n");
+        printf("Enter your choice to find the task\n");
+        scanf("%d", &choice);
+        switch (choice) {
+        case 1:
+            add_student();
             break;
-        case SUBTRACT:
-            printf("\n\t%d - %d = %d\nEnter to continue", 
-            calculator_operand1, 
-            calculator_operand2,
-            subtract(calculator_operand1, calculator_operand2));
-            
-            __fpurge(stdin);
-            getchar();
+        case 2:
+            find_rl();
             break;
-        case MULTIPLY:
-            printf("\n\t%d * %d = %d\nEnter to continue", 
-            calculator_operand1, 
-            calculator_operand2,
-            multiply(calculator_operand1, calculator_operand2));
-            
-            __fpurge(stdin);
-            getchar();
+        case 3:
+            find_fn();
             break;
-        case DIVIDE:
-            printf("\n\t%d / %d = %d\nEnter to continue", 
-            calculator_operand1, 
-            calculator_operand2,
-            divide(calculator_operand1, calculator_operand2));
-            
-            __fpurge(stdin);
-            getchar();
+        case 4:
+            find_c();
             break;
         case 5:
+            tot_s();
+            break;
+        case 6:
+            del_s();
+            break;
+        case 7:
+            up_s();
+            break;
+        case 8:
             exit(0);
             break;
-        default:
-            printf("\n\t---It should never come here---\n");
+        }
     }
 }
 
-int valid_operation(int operation)
-{
-    /* Check if the operation is a valid operation */
-    return ((ADD <= operation) && (EXIT >= operation)) ? VALID: INVALID;
-}
+
