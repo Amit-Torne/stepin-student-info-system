@@ -1,1 +1,50 @@
+#include "header.h"
+#include <stdio.h>
+#include "unity_internals.h" 
+#include "unity.h"
+
+void setUp(){}
+
+void tearDown(){}
+
+
+void add_student(void){
+    TEST_ASSERT_EQUAL("amit",*add_student(1));
+}
+
+void find_rl(void){
+    TEST_ASSERT_EQUAL(1,find_rl(22));
+}
+
+void find_fn(void){
+    TEST_ASSERT_EQUAL("amit",find_fn(amit));
+}
+
+void find_c(void){
+    TEST_ASSERT_EQUAL(4,find_c(4));
+}
+void test_tol_s(void){
+    TEST_ASSERT_EQUAL(30,tot_s(30));
+}
+ void test_up_s(void){
+     TEST_ASSERT_EQUAL(21,up_s(21));
+}
+void test_del_s(void){
+    TEST_ASSERT_EQUAL(4,del_s(4));
+}
+
+
+int test_main(void){
+    UNITY_BEGIN();
+
+    RUN_TEST(test_add_student);
+    RUN_TEST(test_find_rl);
+    RUN_TEST(test_find_fn);
+    RUN_TEST(test_find_c);
+    RUN_TEST(test_tol_s);
+    RUN_TEST(test_up_s);
+    RUN_TEST(test_del_s);
+
+    return UNITY_END();
+}
 
